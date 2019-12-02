@@ -17,15 +17,16 @@
  */
 #include "uart_init.h"
 #include "driverlib.h"
-void myuart_init(){
-	//P3.3,4 = USCI_A0 TXD/RXD
+void uart_init(){
+	//P3^3 = TXD
+	//P3^4 = RXD
 	GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P3,GPIO_PIN3 + GPIO_PIN4);
-	//Baudrate = 9600, clock freq = 4MHz
-	//UCBRx = 26, UCBRFx = 1, UCBRSx = 0, UCOS16 = 1
+	//Baud = 115200, SMCLK = 12MHz
+	//UCBRx = 6, UCBRFx = 8, UCBRSx = 0, UCOS16 = 1
 	USCI_A_UART_initParam param = {0};
 	param.selectClockSource = USCI_A_UART_CLOCKSOURCE_SMCLK;
-	param.clockPrescalar = 26;
-	param.firstModReg = 1;
+	param.clockPrescalar = 6;
+	param.firstModReg = 8;
 	param.secondModReg = 0;
 	param.parity = USCI_A_UART_NO_PARITY;
 	param.msborLsbFirst = USCI_A_UART_LSB_FIRST;
@@ -40,5 +41,8 @@ void myuart_init(){
 	//Enable Receive Interrupt
 	USCI_A_UART_clearInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
 	USCI_A_UART_enableInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
+}
+void uart_print(unsigned char *puts){
+    for (; *puts != 0;	puts++)  USCI_A_UART_transmitData(USCI_A0_BASE,*puts);
 }
 
