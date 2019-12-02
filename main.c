@@ -17,8 +17,11 @@
  */
 #include "driverlib.h"
 #include "AD9833\AD9833.h"
+#include "clk_init.h"
+#include "uart_init.h"
 void main(){
     WDT_A_hold(WDT_A_BASE);
+    clock_init(48);//Set CPU Freq=48MHz
 	ioset();
 	//P6^0	FSYNC
 	//P6^1	CLK
