@@ -17,6 +17,14 @@
  */
 #include "uart_init.h"
 #include "driverlib.h"
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Function			: uart_init
+ * Description		: Setup UART@115200
+ * Parameter		: N/A
+ * Return			: N/A
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 void uart_init(){
 	//P3^3 = TXD
 	//P3^4 = RXD
@@ -42,6 +50,15 @@ void uart_init(){
 	USCI_A_UART_clearInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
 	USCI_A_UART_enableInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
 }
+
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Function			: uart_print
+ * Description		: Send a string using uart
+ * Parameter		: *puts
+ * Return			: N/A
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 void uart_print(unsigned char *puts){
     for (; *puts != 0;	puts++)  USCI_A_UART_transmitData(USCI_A0_BASE,*puts);
 }

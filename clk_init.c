@@ -21,6 +21,15 @@
 #define UCS_XT2_CRYSTAL_FREQUENCY 4000000
 #define UCS_XT1_TIMEOUT 50000
 #define UCS_XT2_TIMEOUT 50000
+
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Function			: clock_init
+ * Description		: Setup system clock
+ * Parameter		: FOSC(MHz)
+ * Return			: N/A
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 void clock_init(unsigned char FOSC){
 	//Enable XT1+XT2
 	UCS_setExternalClockSource(UCS_XT1_CRYSTAL_FREQUENCY,UCS_XT2_CRYSTAL_FREQUENCY);
