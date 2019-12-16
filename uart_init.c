@@ -47,8 +47,8 @@ void uart_init(){
 	//Enable UART module for operation
 	USCI_A_UART_enable(USCI_A0_BASE);
 	//Enable Receive Interrupt
-	USCI_A_UART_clearInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
-	USCI_A_UART_enableInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
+	//USCI_A_UART_clearInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
+	//USCI_A_UART_enableInterrupt(USCI_A0_BASE,USCI_A_UART_RECEIVE_INTERRUPT);
 }
 
 /*
