@@ -48,10 +48,7 @@ void main(){
     AD9833_Normsig();//Output [Sine,1KHz,1.68Vpp,0] wave
     AD9833_AmpSet(64);
     uart_print("CLS(19);DS12(0,0,'Waveform Generator',1,0);DS12(0,15,'by Li Jiaxun',1,0);BOX(0,90,318,239,1);DS12(2,100,'Freq',1);DS12(2,112,'1 KHz',0);DS12(2,124,'Volt',1);DS12(2,136,'1.68 Vpp',0);DS12(2,148,'Wave',1);DS12(2,160,'Sinwave',0);DS12(2,172,'Phase',1);DS12(2,184,'0',0);\r\n");
-    //GPIO_setAsOutputPin(GPIO_PORT_P1,GPIO_PIN0);
-    //GPIO_setOutputHighOnPin(GPIO_PORT_P1,GPIO_PIN0);
-    //AD9833_WaveSeting(2000.0,0,SIN_WAVE,0 );//2KHz,FREQ0,SINE,PHS=0
-    //AD9833_AmpSet(64);//Vpp=1.68v@3.3vMCU
+
 bigloop:
     	if(!(P8IN & BIT1)){
     		delay_ms(25);
@@ -70,7 +67,7 @@ bigloop:
     		if(!(P8IN & BIT2)){
     			AD9833_WaveSeting(5000000,0,SIN_WAVE,0 );
     			AD9833_AmpSet(64);
-    		    uart_print("CLS(19);DS12(0,0,'Waveform Generator',1,0);DS12(0,15,'by Li Jiaxun',1,0);BOX(0,90,318,239,1);DS12(2,100,'Freq',1);DS12(2,112,'5 MHz',0);DS12(2,124,'Volt',1);DS12(2,136,'500 mVpp',0);DS12(2,148,'Wave',1);DS12(2,160,'Sinwave',0);DS12(2,172,'Phase',1);DS12(2,184,'0',0);\r\n");
+    		    uart_print("CLS(19);DS12(0,0,'Waveform Generator',1,0);DS12(0,15,'by Li Jiaxun',1,0);BOX(0,90,318,239,1);DS12(2,100,'Freq',1);DS12(2,112,'5 MHz',0);DS12(2,124,'Volt',1);DS12(2,136,'1.68 Vpp',0);DS12(2,148,'Wave',1);DS12(2,160,'Sinwave',0);DS12(2,172,'Phase',1);DS12(2,184,'0',0);\r\n");
     		    GPIO_setAsOutputPin(GPIO_PORT_P1,GPIO_PIN0);
     		    GPIO_setOutputHighOnPin(GPIO_PORT_P1,GPIO_PIN0);
     		    delay_ms(300);
